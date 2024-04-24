@@ -7,6 +7,8 @@ const ballStart = [270, 40]
 let ballCurrentPosition = ballStart
 let timerId
 const ballDiameter = 20
+const boardHeight = 300
+
 
 let xDirection = 2
 let yDirection = 2
@@ -120,7 +122,7 @@ function moveBall() {
     ballCurrentPosition[0] += xDirection
     ballCurrentPosition[1] += yDirection
     drawBall()
-
+    checkForCollissions()
 }
 
 timerId = setInterval(moveBall, 20)
@@ -130,17 +132,34 @@ timerId = setInterval(moveBall, 20)
 
 function checkForCollissions() {
  //check for wall collisions
- if (ballCurrentPosition[0] >= (boardWidth - ballDiameter)) {
+ if (
+     ballCurrentPosition[0] >= (boardWidth - ballDiameter) ||
+     ballCurrentPosition[1] >= (boardHeight - ballDiameter) ||
+     ballCurrentPosition[0] <= 0
+    ) {
      changeDirection()
  } // if ballCurrentPosition is larger => it's off the grid
+
+    //check for game over
 }
 
+
+
 function changeDirection() {
- if(xDirection === 2 && yDirection == 2) {
+ if(xDirection === 2 && yDirection === 2) {
     yDirection = -2
     return
  }
- if(){
-    
+ if(xDirection === -2 && yDirection === -2) {
+    xDirection = -2
+    return
  }
+}
+if(xDirection === -2 && yDirection === -2) {
+    yDirection = 2
+    return
+}
+if(xDirection === -2 && yDirection === 2) {
+    xDirection = 2
+    return
 }
