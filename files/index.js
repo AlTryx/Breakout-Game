@@ -2,6 +2,7 @@ const grid = document.querySelector('.grid') //I'm looking for the grid class (k
 const blockWidth = 100
 const blockHeight = 20
 const userStart = [230, 10]
+const boardWidth = 560
 
 let currentPosition = userStart
 
@@ -64,15 +65,23 @@ function drawUser() {
     user.style.left = currentPosition[0] + 'px'
 user.style.bottom = currentPosition[1] + 'px'
 }
-
+ 
 
 //move user
 function moveUser(e) {
     switch(e.key) {
         case'ArrowLeft':
+        if (currentPosition[0] > 0) {
             currentPosition[0] -= 10
             drawUser()
-            break;
+            
+        }break;
+        case 'ArrowRight':
+            if(currentPosition<boardWidth) {
+                currentPosition[0] += 10
+                drawUser()
+            }
+            
     }
 }
 
