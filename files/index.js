@@ -8,6 +8,7 @@ let ballCurrentPosition = ballStart
 let timerId
 const ballDiameter = 20
 const boardHeight = 300
+const scoreDisplay = document.querySelector('#score')
 
 
 let xDirection = 2
@@ -143,6 +144,8 @@ function checkForCollisions() {
     //check for game over
     if (ballCurrentPosition[1] <= 0) {
         clearInterval(timerId)
+        scoreDisplay.textContent = "You lose"
+        document.removeEventListener('keydown', moveUser)
     }
 
 
