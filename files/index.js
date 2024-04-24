@@ -122,7 +122,7 @@ function moveBall() {
     ballCurrentPosition[0] += xDirection
     ballCurrentPosition[1] += yDirection
     drawBall()
-    checkForCollissions()
+    checkForCollisions()
 }
 
 timerId = setInterval(moveBall, 20)
@@ -130,7 +130,7 @@ timerId = setInterval(moveBall, 20)
 
 //check for collisions
 
-function checkForCollissions() {
+function checkForCollisions() {
  //check for wall collisions
  if (
      ballCurrentPosition[0] >= (boardWidth - ballDiameter) ||
@@ -141,6 +141,11 @@ function checkForCollissions() {
  } // if ballCurrentPosition is larger => it's off the grid
 
     //check for game over
+    if (ballCurrentPosition[1] <= 0) {
+        clearInterval(timerId)
+    }
+
+
 }
 
 
