@@ -128,5 +128,7 @@ timerId = setInterval(moveBall, 20)
 
 function checkForCollissions() {
  //check for wall collisions
- if (ballCurrentPosition[0] >= (boardWidth - ballDiameter)) // if ballCurrentPosition is larger => it's off the grid
+ if (ballCurrentPosition[0] >= (boardWidth - ballDiameter)) {
+    
+ } // if ballCurrentPosition is larger => it's off the grid
 }
