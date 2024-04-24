@@ -19,3 +19,12 @@
     background-color: purple;
     
 }
+
+.ball {
+    width: 20px;
+    height:20px;
+    
+    position: absolute;
+    background-color:brown;
+    border-radius:10px;
+}

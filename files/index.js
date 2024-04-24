@@ -3,6 +3,11 @@ const blockWidth = 100
 const blockHeight = 20
 const userStart = [230, 10]
 const boardWidth = 560
+const ballStart = [270, 40]
+let ballCurrentPosition = ballStart
+let timerId
+const ballDiameter = 20
+
 
 let currentPosition = userStart
 
@@ -63,9 +68,18 @@ grid.appendChild(user)
 //draw the user
 function drawUser() {
     user.style.left = currentPosition[0] + 'px'
-user.style.bottom = currentPosition[1] + 'px'
+    user.style.bottom = currentPosition[1] + 'px'
 }
  
+
+// draw the ball
+
+function drawBall(){
+    ball.style.left = ballCurrentPosition[0] + 'px' // first value + the string of 'px'
+    ball.style.bottom = ballCurrentPosition[1] + 'px'
+}
+
+
 
 //move user
 function moveUser(e) {
@@ -76,8 +90,9 @@ function moveUser(e) {
             drawUser()
             
         }break;
+
         case 'ArrowRight':
-            if(currentPosition<boardWidth) {
+            if(currentPosition<boardWidth -blockWidth) {
                 currentPosition[0] += 10
                 drawUser()
             }
@@ -85,4 +100,33 @@ function moveUser(e) {
     }
 }
 
-document.addEvenetListener('keydown', moveUser)
+document.addEventListener('keydown', moveUser)
+
+
+
+// add ball
+
+const ball = document.createElement('div')
+ball.classList.add('ball')
+grid.appendChild(ball) // To but the ball in the grid (in the doc)
+drawBall()
+
+
+// move ball
+
+function moveBall() {
+    ballCurrentPosition[0] += 2
+    ballCurrentPosition[1] += 2
+    drawBall()
+
+}
+
+timerId = setInterval(moveBall, 20)
+
+
+//check for collisions
+
+function checkForCollissions() {
+ //check for wall collisions
+ if (ballCurrentPosition[0] >= (boardWidth - ballDiameter)) // if ballCurrentPosition is larger => it's off the grid
+}
