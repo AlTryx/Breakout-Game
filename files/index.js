@@ -9,7 +9,7 @@ let timerId
 const ballDiameter = 20
 const boardHeight = 300
 const scoreDisplay = document.querySelector('#score')
-
+let score = 0
 
 let xDirection = 2
 let yDirection = 2
@@ -143,6 +143,8 @@ for (let i = 0; i<blocks.length;i++) { //mapping
         allBlocks[i].classList.remove('block')
         blocks.splice(i, 1)
         changeDirection()
+        score++
+        scoreDisplay.textContent = score
     }
 }
 
@@ -154,6 +156,17 @@ for (let i = 0; i<blocks.length;i++) { //mapping
     ) {
      changeDirection()
  } // if ballCurrentPosition is larger => it's off the grid
+
+
+    //check for user collisions
+    if(
+       ( ballCurrentPosition[0] > currentPosition[0] && ballCurrentPosition[0] < currentPosition[0] + blockWidth) && // x axis
+    (ballCurrentPosition[1]> currentPosition[1] && ballCurrentPosition[1] <currentPosition[1] + blockHeight) // y axis
+    )
+     {
+        changeDirection()
+     }
+
 
     //check for game over
     if (ballCurrentPosition[1] <= 0) {
