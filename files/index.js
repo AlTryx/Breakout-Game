@@ -139,7 +139,10 @@ for (let i = 0; i<blocks.length;i++) { //mapping
             ((ballCurrentPosition[1] + ballDiameter) > blocks[i].bottomLeft[1] && ballCurrentPosition[1] < blocks[i].topLeft[1]) // y axis
     ) // we know this way that the ball is "in" a block
     {
-
+        const allBlocks = Array.from(document.querySelectorAll('.block'))
+        allBlocks[i].classList.remove('block')
+        blocks.splice(i, 1)
+        changeDirection()
     }
 }
 
