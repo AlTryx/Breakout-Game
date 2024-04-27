@@ -132,7 +132,12 @@ timerId = setInterval(moveBall, 20)
 //check for collisions
 
 function checkForCollisions() {
- //check for wall collisions
+ //check for block collisions
+for (let i = 0; i<blocks.length;i++) { //mapping
+    
+}
+
+//check for wall collisions
  if (
      ballCurrentPosition[0] >= (boardWidth - ballDiameter) ||
      ballCurrentPosition[1] >= (boardHeight - ballDiameter) ||
