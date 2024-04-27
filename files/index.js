@@ -145,6 +145,14 @@ for (let i = 0; i<blocks.length;i++) { //mapping
         changeDirection()
         score++
         scoreDisplay.textContent = score
+
+        // check for win
+
+        if(blocks.length === 0) {
+            scoreDisplay.textContent = 'YOU WIN'
+            clearInterval(timerId)
+            document.removeEventListener('keydown', moveUser)
+        }
     }
 }
 
