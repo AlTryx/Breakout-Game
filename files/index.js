@@ -134,7 +134,13 @@ timerId = setInterval(moveBall, 20)
 function checkForCollisions() {
  //check for block collisions
 for (let i = 0; i<blocks.length;i++) { //mapping
-    
+    if(
+            (ballCurrentPosition[0] > blocks[i].bottomLeft[0] && ballCurrentPosition[0] < blocks[i].bottomRight[0]) && // x axis
+            ((ballCurrentPosition[1] + ballDiameter) > blocks[i].bottomLeft[1] && ballCurrentPosition[1] < blocks[i].topLeft[1]) // y axis
+    ) // we know this way that the ball is "in" a block
+    {
+
+    }
 }
 
 //check for wall collisions
